@@ -7,26 +7,25 @@ import java.util.Map;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day7LogicalCircuits {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day07/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		Map<String, InputOutput> outputs = buildMap();
+		Map<String, InputOutput> outputs = buildMap(lines);
 		Map<String, InputOutput> outputs2 = copyMap(outputs);
 		int result = part1(outputs);
 		System.out.println(result); // 16076
-		System.out.println(part2(outputs2, result)); // 2797
+		System.out.println(part2(outputs2, (char) result)); // 2797
 	}
 	
-	private static int part1(Map<String, InputOutput >outputs) {
+	public static int part1(Map<String, InputOutput >outputs) {
 		return resolve("a", outputs);
 	}
 	
-	private static int part2(Map<String, InputOutput> outputs, int override) {
+	public static int part2(Map<String, InputOutput> outputs, char override) {
 		InputOutput io = outputs.get("b");
-	    io.output = 16076;
+	    io.output = override;
 	    return resolve("a", outputs);
 	}
 	
@@ -66,9 +65,9 @@ public class Day7LogicalCircuits {
 		return result;
 	}
 	
-	private static Map<String, InputOutput> buildMap() {
+	public static Map<String, InputOutput> buildMap(String[] lines) {
 		Map<String, InputOutput> outputs = new HashMap<>();
-		for (String str : LINES) {
+		for (String str : lines) {
         	String[] fields = str.split(" -> ");
         	String[] inputs = fields[0].split(" ");
         	InputOutput io;
@@ -111,7 +110,7 @@ public class Day7LogicalCircuits {
 		return outputs;
 	}
 	
-	private static Map<String, InputOutput> copyMap(Map<String, InputOutput> src) {
+	public static Map<String, InputOutput> copyMap(Map<String, InputOutput> src) {
 		Map<String, InputOutput> copy = new HashMap<>();
 		for (String key : src.keySet()) {
 			InputOutput val = src.get(key);

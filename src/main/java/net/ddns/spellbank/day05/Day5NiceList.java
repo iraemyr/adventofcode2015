@@ -7,34 +7,33 @@ import java.util.Map;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day5NiceList {
-	private static String[] LINES;
 	private static Map<String, Integer> SUBSTRS = new HashMap<>();
 
 	public static void main(String[] args) {
 		String file = "day05/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		System.out.println(part1()); //238
-		System.out.println(part2()); //69
+		System.out.println(part1(lines)); //238
+		System.out.println(part2(lines)); //69
 	}
 	
-	private static int part1() {
+	public static int part1(String[] lines) {
 		int nice = 0;
-		for (String s : LINES) {
+		for (String s : lines) {
 			if (isNice(s)) nice++;
 		}
 		return nice;
 	}
 	
-	private static int part2() {
+	public static int part2(String[] lines) {
 		int nice = 0;
-		for (String s : LINES) {
+		for (String s : lines) {
 			if (isNewNice(s)) nice++;
 		}
 		return nice;
 	}
 	
-	private static boolean isNice(String s) {
+	public static boolean isNice(String s) {
 		int vowels = 0;
 		boolean repeat = false;
 		char prev = '0';
@@ -61,7 +60,7 @@ public class Day5NiceList {
 		return (vowels > 2 && repeat);
 	}
 	
-	private static boolean isNewNice(String s) {
+	public static boolean isNewNice(String s) {
 		SUBSTRS.clear();
 		char pprev = '0';
 		char prev = '1';

@@ -4,21 +4,20 @@ package net.ddns.spellbank.day06;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day6Lights {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day06/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		System.out.println(part1()); // 377891
-		System.out.println(part2()); // 14110788
+		System.out.println(part1(lines)); // 377891
+		System.out.println(part2(lines)); // 14110788
 	}
 	
-	private static int part1() {
+	public static int part1(String[] lines) {
 		boolean[][] lights = new boolean[1000][1000];
 	    int numOn = 0;
 	    String origin, dest;
-	    for (String s : LINES) {
+	    for (String s : lines) {
         	String[] fields = s.split(" ");
         	if (fields[0].equals("toggle")) {
         		origin = fields[1];
@@ -44,11 +43,11 @@ public class Day6Lights {
 		return numOn;
 	}
 	
-	private static int part2() {
+	public static int part2(String[] lines) {
 		int[][] lights = new int[1000][1000];
 	    int brightness = 0;
 	    String origin, dest;
-	    for (String s : LINES) {
+	    for (String s : lines) {
         	String[] fields = s.split(" ");
         	if (fields[0].equals("toggle")) {
         		origin = fields[1];

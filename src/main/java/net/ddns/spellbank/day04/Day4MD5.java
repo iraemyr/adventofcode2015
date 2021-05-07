@@ -6,17 +6,16 @@ import java.security.NoSuchAlgorithmException;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day4MD5 {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day04/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		System.out.println(part1(LINES[0])); // 117946
-		System.out.println(part2(LINES[0])); // 3938038
+		System.out.println(part1(lines[0])); // 117946
+		System.out.println(part2(lines[0])); // 3938038
 	}
 	
-	private static int part1(String prefix) {
+	public static int part1(String prefix) {
 		int i = 0;
 	    MessageDigest md = null;
 	    try {
@@ -34,7 +33,7 @@ public class Day4MD5 {
 		return i;
 	}
 	
-	private static int part2(String prefix) {
+	public static int part2(String prefix) {
 		int i = 0;
 	    MessageDigest md = null;
 	    try {

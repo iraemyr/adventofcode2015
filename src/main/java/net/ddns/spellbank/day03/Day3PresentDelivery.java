@@ -7,21 +7,20 @@ import net.ddns.spellbank.utils.InputFile;
 import net.ddns.spellbank.utils.Tuple;
 
 public class Day3PresentDelivery {
-    private static String[] LINES;
 	
 	public static void main(String[] args) {
 		String file = "day03/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		System.out.println(part1()); // 2081
-		System.out.println(part2()); // 2341
+		System.out.println(part1(lines)); // 2081
+		System.out.println(part2(lines)); // 2341
 	}
 	
-	private static int part1() {
+	public static int part1(String[] lines) {
 		int x = 0, y = 0;
 	    Map<String, Integer> world = new HashMap<>();
 	    world.put(new Tuple(x, y).toString(), 1);
-	    for (String str : LINES) {
+	    for (String str : lines) {
         	for (char c : str.toCharArray()) {
         		switch(c) {
         		case '^' :
@@ -47,12 +46,12 @@ public class Day3PresentDelivery {
 	    return world.keySet().size();
 	}
 	
-	private static int part2() {
+	public static int part2(String[] lines) {
 		int[][] p = new int[2][2];
 	    boolean santa = true;
 	    Map<String, Integer> world = new HashMap<>();
 	    world.put(new Tuple(0, 0).toString(), 2);
-		for (String str : LINES) {
+		for (String str : lines) {
         	for (char c : str.toCharArray()) {
         		int[] pos = santa ? p[0] : p[1];
         		switch(c) {
