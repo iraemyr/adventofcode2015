@@ -1,32 +1,31 @@
 package net.ddns.spellbank.day02;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day2Wrapping {
-    private static String[] LINES;
 	
 	public static void main(String[] args) {
 		String file = "day02/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		long start = System.nanoTime();
-		int p1 = part1();
+		int p1 = part1(lines);
 		long stop = System.nanoTime();
 		double ms = (stop - start) / 1000000.0;
 		System.out.println("Part1: " + p1); // 1586300
 		System.out.println("Completed in " + ms + "ms");
 		start = System.nanoTime();
-		int p2 = part2();
+		int p2 = part2(lines);
 		stop = System.nanoTime();
 		ms = (stop - start) / 1000000.0;
 		System.out.println("Part2: " + p2); //3737498
 		System.out.println("Completed in " + ms + "ms");
 	}
 	
-	private static int part1() {
+	public static int part1(String[] lines) {
 		int paper = 0;
-		for (String str : LINES) {
+		for (String str : lines) {
     	    String[] dims = str.split("x");
     	    int[] lwh = new int[3];
     	    for (int i = 0; i < dims.length; i++) lwh[i] = Integer.parseInt(dims[i]);
@@ -40,9 +39,9 @@ public class Day2Wrapping {
 		return paper;
 	}
 	
-	private static int part2() {
+	public static int part2(String[] lines) {
 		int ribbon = 0;
-		for (String str : LINES) {
+		for (String str : lines) {
     	    String[] dims = str.split("x");
     	    int[] lwh = new int[3];
     	    for (int i = 0; i < dims.length; i++) lwh[i] = Integer.parseInt(dims[i]);
