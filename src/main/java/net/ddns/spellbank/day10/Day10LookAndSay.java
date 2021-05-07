@@ -4,24 +4,23 @@ package net.ddns.spellbank.day10;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day10LookAndSay {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day10/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		String input = LINES[0];
+		String input = lines[0];
 		input = part1(input);
 		System.out.println(input.length()); // 252594
 		input = part2(input);
 		System.out.println(input.length()); // 3579328
 	}
 	
-	private static String part1(String input) {
+	public static String part1(String input) {
 		return doCycles(40, input);
 	}
 	
-	private static String part2(String input) {
+	public static String part2(String input) {
 		return doCycles(10, input);
 	}
 	

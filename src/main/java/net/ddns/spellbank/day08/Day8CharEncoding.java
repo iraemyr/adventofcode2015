@@ -4,20 +4,19 @@ package net.ddns.spellbank.day08;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day8CharEncoding {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day08/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		System.out.println(part1()); // 1342
-		System.out.println(part2()); // 2074
+		System.out.println(part1(lines)); // 1342
+		System.out.println(part2(lines)); // 2074
 	}
 	
-	private static int part1() {
+	public static int part1(String[] lines) {
 		int code = 0;
 	    int mem = 0;
-	    for (String str : LINES) {
+	    for (String str : lines) {
     	    code += str.length();
     	    int m = -2;
     	    char[] st = str.toCharArray();
@@ -33,10 +32,10 @@ public class Day8CharEncoding {
 		return code - mem;
 	}
 	
-	private static int part2() {
+	public static int part2(String[] lines) {
 		int code = 0;
 	    int mem = 0;
-	    for (String str : LINES) {
+	    for (String str : lines) {
     	    code += str.length();
     	    int m = 2;
     	    char[] st = str.toCharArray();

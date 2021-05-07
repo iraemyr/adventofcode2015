@@ -9,35 +9,36 @@ import java.util.Set;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day9MinMaxTrip {
-	private static String[] LINES;
 	private static int MIN_DIST = Integer.MAX_VALUE;
 	private static int MAX_DIST = 0;
 
 	public static void main(String[] args) {
 		String file = "day09/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		Map<String, City> map = makeMap();
+		Map<String, City> map = makeMap(lines);
 		Set<String> visited = new HashSet<>();
 		System.out.println(part1(map, visited)); // 117
 		visited.clear();
 		System.out.println(part2(map, visited)); // 909
 	}
 	
-	private static int part1(Map<String, City> map, Set<String> visited) {
+	public static int part1(Map<String, City> map, Set<String> visited) {
+		MIN_DIST = Integer.MAX_VALUE;
 		for (String s : map.keySet()) calcMin(map, 0, visited, s);
 		return MIN_DIST;
 	}
 	
-	private static int part2(Map<String, City> map, Set<String> visited) {
+	public static int part2(Map<String, City> map, Set<String> visited) {
+		MAX_DIST = 0;
 		for (String s : map.keySet()) calcMax(map, 0, visited, s);
 		return MAX_DIST;
 	}
 	
-	private static Map<String, City> makeMap() {
+	public static Map<String, City> makeMap(String[] lines) {
 		Map<String, City> map = new HashMap<>();
 		
-		for (String str : LINES) {
+		for (String str : lines) {
     	    String[] fields = str.split(" ");
     	    String src = fields[0];
     	    String dest = fields[2];
