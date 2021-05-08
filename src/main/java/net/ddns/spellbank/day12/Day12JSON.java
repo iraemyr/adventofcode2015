@@ -4,18 +4,18 @@ package net.ddns.spellbank.day12;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day12JSON {
-	private static String[] LINES;
 	private static int INDEX = 1;
 
 	public static void main(String[] args) {
 		String file = "day12/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		System.out.println(part1(LINES[0])); // 111754
-		System.out.println(part2(LINES[0])); // 65402
+		System.out.println(part1(lines[0])); // 111754
+		System.out.println(part2(lines[0])); // 65402
 	}
 	
-	private static int part1(String json) {
+	public static int part1(String json) {
+		INDEX = 1;
 		int sum = 0;
 	    int begin = -1;
 	    for (int i = 0; i < json.length(); i++) {
@@ -31,7 +31,8 @@ public class Day12JSON {
 	    return sum;
 	}
 	
-	private static int part2(String json) {
+	public static int part2(String json) {
+		INDEX = 1;
 		int sum = 0;
 	    if (json.charAt(0) == '[') sum = sumArray(json);
 	    else sum = sumObject(json);

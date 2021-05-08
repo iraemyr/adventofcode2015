@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import net.ddns.spellbank.utils.InputFile;
-import net.ddns.spellbank.utils.InputTestFile;
 
 public class TestDay3 {
 	@Test
@@ -22,13 +21,13 @@ public class TestDay3 {
     
     @Test
     void samplePart1() {
-    	String[] lines = InputTestFile.getLines("day03/test");
+    	String[] lines = InputFile.getLines("day03/test");
     	assertEquals(4, Day3PresentDelivery.part1(lines));
     }
     
     @Test
     void samplePart2() {
-    	String[] lines = InputTestFile.getLines("day03/test");
+    	String[] lines = InputFile.getLines("day03/test");
     	assertEquals(3, Day3PresentDelivery.part2(lines));
     }
 }

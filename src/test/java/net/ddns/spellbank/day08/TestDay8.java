@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import net.ddns.spellbank.utils.InputFile;
-import net.ddns.spellbank.utils.InputTestFile;
 
 public class TestDay8 {
 	@Test
@@ -20,12 +19,12 @@ public class TestDay8 {
 	}
 	
 	@Test void samplePart1() {
-		String[] lines = InputTestFile.getLines("day08/test");
+		String[] lines = InputFile.getLines("day08/test");
 		assertEquals(0 + 3 + 7, + 1, Day8CharEncoding.part1(lines));
 	}
 	
 	@Test void samplePart2() {
-		String[] lines = InputTestFile.getLines("day08/test");
+		String[] lines = InputFile.getLines("day08/test");
 		assertEquals(4 + 4 + 6 + 5, Day8CharEncoding.part2(lines));
 	}
 

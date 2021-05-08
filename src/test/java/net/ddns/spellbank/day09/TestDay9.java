@@ -8,7 +8,6 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import net.ddns.spellbank.utils.InputFile;
-import net.ddns.spellbank.utils.InputTestFile;
 
 public class TestDay9 {
 	
@@ -30,7 +29,7 @@ public class TestDay9 {
 	
 	@Test
 	void samplePart1() {
-		String[] lines = InputTestFile.getLines("day09/test");
+		String[] lines = InputFile.getLines("day09/test");
 		var map = Day9MinMaxTrip.makeMap(lines);
 		Set<String> visited = new HashSet<>();
 		assertEquals(605, Day9MinMaxTrip.part1(map, visited));
@@ -38,7 +37,7 @@ public class TestDay9 {
 	
 	@Test
 	void samplePart2() {
-		String[] lines = InputTestFile.getLines("day09/test");
+		String[] lines = InputFile.getLines("day09/test");
 		var map = Day9MinMaxTrip.makeMap(lines);
 		Set<String> visited = new HashSet<>();
 		assertEquals(982, Day9MinMaxTrip.part2(map, visited));

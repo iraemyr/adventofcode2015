@@ -9,26 +9,26 @@ import java.util.Set;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day13Seating {
-	private static String[] LINES;
 	private static int MAX = Integer.MIN_VALUE;
 
 	public static void main(String[] args) {
 		String file = "day13/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		Map<String, Map<String, Integer>> pref = buildPreferences();
+		Map<String, Map<String, Integer>> pref = buildPreferences(lines);
 	    Set<String> people = new HashSet<>(pref.keySet());
 		System.out.println(part1(pref, people)); // 618
 		System.out.println(part2(pref, people)); // 601
 	}
 	
-	private static int part1(Map<String, Map<String, Integer>> pref, Set<String> people) {
+	public static int part1(Map<String, Map<String, Integer>> pref, Set<String> people) {
+		MAX = Integer.MIN_VALUE;
 		String[] seating = new String[pref.size()];
 		doSeating(pref, people, seating, 0);
 		return MAX;
 	}
 	
-	private static int part2(Map<String, Map<String, Integer>> pref, Set<String> people) {
+	public static int part2(Map<String, Map<String, Integer>> pref, Set<String> people) {
 		MAX = Integer.MIN_VALUE;
 	    people.add("myself");
 	    String[] seating = new String[people.size()];
@@ -36,9 +36,9 @@ public class Day13Seating {
 		return MAX;
 	}
 	
-	private static Map<String, Map<String, Integer>> buildPreferences() {
+	public static Map<String, Map<String, Integer>> buildPreferences(String[] lines) {
 		Map<String, Map<String, Integer>> pref = new HashMap<>();
-		for (String str : LINES) {
+		for (String str : lines) {
     	    String[] fields = str.split(" ");
     	    String name = fields[0];
     	    Map<String, Integer> m = pref.getOrDefault(name, new HashMap<>());

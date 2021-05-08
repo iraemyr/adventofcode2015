@@ -7,19 +7,18 @@ import java.util.List;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day16GiftForensics {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day16/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		List<Aunt> aunts = parseAunts();
+		List<Aunt> aunts = parseAunts(lines);
 		
 		System.out.println(part1(aunts)); // 373
 		System.out.println(part2(aunts)); // 260
 	}
 	
-	private static int part1(List<Aunt> aunts) {
+	public static int part1(List<Aunt> aunts) {
 		for (Aunt a : aunts) {
 			//children: 3
 			Integer v = a.getProperty("children");
@@ -56,7 +55,7 @@ public class Day16GiftForensics {
 		return -1;
 	}
 	
-	private static int part2(List<Aunt> aunts) {
+	public static int part2(List<Aunt> aunts) {
 		for (Aunt a : aunts) {
 			//children: 3
 			Integer v = a.getProperty("children");
@@ -93,9 +92,9 @@ public class Day16GiftForensics {
 		return -1;
 	}
 	
-	private static List<Aunt> parseAunts() {
+	public static List<Aunt> parseAunts(String[] lines) {
 		List<Aunt> aunts = new ArrayList<>();
-		for (String str : LINES) {
+		for (String str : lines) {
     	    String[] fields = str.split(", ");
     	    String[] first = fields[0].split(": ");
     	    String[] f = first[0].split(" ");

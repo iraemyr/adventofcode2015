@@ -4,19 +4,18 @@ package net.ddns.spellbank.day11;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day11Passwords {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day11/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		String password = part1(LINES[0]);
+		String password = part1(lines[0]);
 		System.out.println(password); // hxbxxyzz
 		password = part1(password);
 		System.out.println(password); // hxcaabcc
 	}
 	
-	private static String part1(String password) {
+	public static String part1(String password) {
 		char[] pass = password.toCharArray();
 		while (true) {
 			incPassword(pass);

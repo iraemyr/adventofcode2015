@@ -7,33 +7,33 @@ import java.util.List;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day15CookieRecipes {
-	private static String[] LINES;
 	private static int SCORE = 0;
 
 	public static void main(String[] args) {
 		String file = "day15/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		List<Ingredient> ingredients = parseIngredients();
+		List<Ingredient> ingredients = parseIngredients(lines);
 		
 		System.out.println(part1(ingredients)); // 21367368
 		System.out.println(part2(ingredients)); // 1766400
 	}
 	
-	private static int part1(List<Ingredient> ingredients) {
+	public static int part1(List<Ingredient> ingredients) {
+		SCORE = 0;
 		combine(ingredients, 0, 0, 0, 0, 0, 0);
 		return SCORE;
 	}
 	
-	private static int part2(List<Ingredient> ingredients) {
+	public static int part2(List<Ingredient> ingredients) {
 		SCORE = 0;
 		combineCal(ingredients, 0, 0, 0, 0, 0, 0, 0);
 		return SCORE;
 	}
 	
-	private static List<Ingredient> parseIngredients() {
+	public static List<Ingredient> parseIngredients(String[] lines) {
 		List<Ingredient> ingredients = new ArrayList<>();
-		for (String str : LINES) {
+		for (String str : lines) {
         	String[] fields = str.split(", ");
         	String[] nameCap  = fields[0].split(": ");
         	String name = nameCap[0];
