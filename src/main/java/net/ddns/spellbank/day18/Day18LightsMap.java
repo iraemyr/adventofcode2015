@@ -8,30 +8,29 @@ import net.ddns.spellbank.utils.InputFile;
 import net.ddns.spellbank.utils.Point;
 
 public class Day18LightsMap {
-	private static String[] LINES;
 	private static List<Point> UPD = new ArrayList<>();
 
 	public static void main(String[] args) {
 		String file = "day18/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
-		char[][] map = parseMap();
+		char[][] map = parseMap(lines);
 		char[][] map2 = copyMap(map);
 	    
-		System.out.println(part1(map)); // 814
-		System.out.println(part2(map2)); // 924
+		System.out.println(part1(map, 100)); // 814
+		System.out.println(part2(map2, 100)); // 924
 	}
 	
-	private static int part1(char[][] map) {
-		for (int i = 0; i < 100; i++) update(map);
+	public static int part1(char[][] map, int rounds) {
+		for (int i = 0; i < rounds; i++) update(map);
 	    int on = 0;
 	    for (char[] m : map)
 	    	for (char c : m) if (c == '#') on++;
 		return on;
 	}
 	
-	private static int part2(char[][] map) {
-		for (int i = 0; i < 100; i++) {
+	public static int part2(char[][] map, int rounds) {
+		for (int i = 0; i < rounds; i++) {
 	    	stuckOn(map);
 	    	update(map);
 	    }
@@ -42,10 +41,10 @@ public class Day18LightsMap {
 	    return on;
 	}
 	
-	private static char[][] parseMap() {
+	public static char[][] parseMap(String[] lines) {
 		char[][] map = null;
 		int row = 0;
-		for (String str : LINES) {
+		for (String str : lines) {
         	if (map == null) map = new char[str.length()][str.length()];
     	    for (int i = 0; i < str.length(); i++) {
     	    	map[row][i] = str.charAt(i);

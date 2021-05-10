@@ -4,12 +4,11 @@ package net.ddns.spellbank.day23;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day23SimpleComputer {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day23/input1";
-		LINES = InputFile.getLines(file);
-		String[][] instructions = parseInput();
+		String[] lines = InputFile.getLines(file);
+		String[][] instructions = parseInput(lines);
 		
 		SimpleComputer comp = new SimpleComputer(instructions);
 		
@@ -17,22 +16,23 @@ public class Day23SimpleComputer {
 		System.out.println(part2(comp)); // 334
 	}
 	
-	private static int part1(SimpleComputer comp) {
+	public static int part1(SimpleComputer comp) {
+		comp.reset();
 		comp.run();
 		return comp.getB();
 	}
 	
-	private static int part2(SimpleComputer comp) {
+	public static int part2(SimpleComputer comp) {
 		comp.reset();
 		comp.setA(1);
 		comp.run();
 		return comp.getB();
 	}
 	
-	private static String[][] parseInput() {
-		String[][] instructions = new String[LINES.length][3];
-    	for (int i = 0; i < LINES.length; i++) {
-    		String s = LINES[i];
+	public static String[][] parseInput(String[] lines) {
+		String[][] instructions = new String[lines.length][3];
+    	for (int i = 0; i < lines.length; i++) {
+    		String s = lines[i];
     		instructions[i][0] = s.substring(0, 3);
     		String[] fields = s.substring(4).split(", ");
     		instructions[i][1] = fields[0];

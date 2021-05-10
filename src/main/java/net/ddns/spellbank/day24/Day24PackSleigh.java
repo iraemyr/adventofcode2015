@@ -11,29 +11,30 @@ import net.ddns.spellbank.utils.InputFile;
 public class Day24PackSleigh {
 	private static int min_num = Integer.MAX_VALUE;
 	private static long quantum_min = 0;
-    private static String[] LINES = null;
     
 	public static void main(String[] args) {
 	    String file = "day24/input1";
-	    LINES = InputFile.getLines(file);
+	    String[] lines = InputFile.getLines(file);
 	    
 	    int sum = 0;
 	    List<Integer> packages = new ArrayList<>();
-	    sum = parseAndGetSum(packages);
-	    var sorted = packages.toArray(new Integer[0]);
+	    sum = parseAndGetSum(packages, lines);
+	    var sorted = getSortedArray(packages);
 	    Arrays.sort(sorted, (a, b) -> b - a);
 	    System.out.println(Long.toUnsignedString(part1(sum, sorted))); // 10723906903
 	    System.out.println(Long.toUnsignedString(part2(sum, sorted))); // 74850409
 	}
 	
-	private static long part1(int sum, Integer[] sorted) {
+	public static long part1(int sum, Integer[] sorted) {
 		 int target = sum / 3;
+		 min_num = Integer.MAX_VALUE;
+		 quantum_min = 0;
 		 Set<Integer> used = new HashSet<>();
 		 pack(sorted, 0, target, 0, used);
 		 return quantum_min;
 	}
 	
-	private static long part2(int sum, Integer[] sorted) {
+	public static long part2(int sum, Integer[] sorted) {
 		int target = sum / 4;
 		min_num = Integer.MAX_VALUE;
 		quantum_min = 0;
@@ -82,14 +83,20 @@ public class Day24PackSleigh {
 		System.out.println();
 	}
 	
-	private static int parseAndGetSum(List<Integer> packages) {
+	public static int parseAndGetSum(List<Integer> packages, String[] lines) {
 		int sum = 0;
-		for (String str : LINES) {
+		for (String str : lines) {
     	    int n = Integer.parseInt(str);
     	    sum += n;
     	    packages.add(n);
         }
 		return sum;
+	}
+	
+	public static Integer[] getSortedArray(List<Integer> packages) {
+		var sorted = packages.toArray(new Integer[0]);
+	    Arrays.sort(sorted, (a, b) -> b - a);
+	    return sorted;
 	}
 
 }

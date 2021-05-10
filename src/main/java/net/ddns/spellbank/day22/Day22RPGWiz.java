@@ -15,7 +15,7 @@ public class Day22RPGWiz {
 	private static final int RECHARGE_MANA = 101;
 	private static final int RECHARGE_COST = 229;
 	private static final int RECHARGE_DUR = 5;
-	private static int min = Integer.MAX_VALUE;
+	private static int MIN = Integer.MAX_VALUE;
 	private static final String[] spells = {"mm", "drain", "shield", "poison", "recharge"};
 	
 	public static void main(String[] args) {
@@ -23,16 +23,25 @@ public class Day22RPGWiz {
 	    final int hHp = 50;
 	    final int hMan = 500;
 	    
-	    simCombat(true, bHp, hHp, hMan, 0, 0, 0, 0, false);
-	    System.out.println(min);
-	    min = Integer.MAX_VALUE;
-	    simCombat(true, bHp, hHp, hMan, 0, 0, 0, 0, true);
-	    System.out.println(min);
+	    System.out.println(part1(bHp, hHp, hMan)); // 953
+	    System.out.println(part2(bHp, hHp, hMan)); // 1289
+	}
+	
+	public static int part1(int bHp, int hHp, int hMan) {
+		MIN = Integer.MAX_VALUE;
+		simCombat(true, bHp, hHp, hMan, 0, 0, 0, 0, false);
+		return MIN;
+	}
+	
+	public static int part2(int bHp, int hHp, int hMan) {
+		MIN = Integer.MAX_VALUE;
+		simCombat(true, bHp, hHp, hMan, 0, 0, 0, 0, true);
+		return MIN;
 	}
 	
 	private static void simCombat(boolean player, int bHp, int hHp, int mana, int used, 
 			                      int shield, int poison, int recharge, boolean hard) {
-		if (used > min) return;
+		if (used > MIN) return;
 		if (player && hard) {
 			hHp--;
 			if (hHp < 1) return;
@@ -42,7 +51,7 @@ public class Day22RPGWiz {
 		boolean armor = (shield-- > 0);
 		if (poison-- > 0) bHp -= POISON_DAM;
 		if (bHp < 1) {
-			min = Math.min(min,  used);
+			MIN = Math.min(MIN,  used);
 			return;
 		}
 		if (recharge-- > 0) mana += RECHARGE_MANA;
@@ -59,7 +68,7 @@ public class Day22RPGWiz {
 				    u = used + MM_COST;
 				    bhp = bHp - MM_DAM;
 				    if (bhp < 1) {
-				    	min = Math.min(min, u);
+				    	MIN = Math.min(MIN, u);
 				    	return;
 				    }
 				    simCombat(false, bhp, hHp, mana - MM_COST, u, shield, poison, recharge, hard);
@@ -70,7 +79,7 @@ public class Day22RPGWiz {
 				    u = used + DRAIN_COST;
 				    bhp = bHp - DRAIN_DAM;
 				    if (bhp < 1) {
-				    	min = Math.min(min, u);
+				    	MIN = Math.min(MIN, u);
 				    	return;
 				    }
 				    simCombat(false, bhp, hHp + DRAIN_DAM, mana - DRAIN_COST, u, shield, poison, recharge, hard);

@@ -7,20 +7,19 @@ import java.util.List;
 import net.ddns.spellbank.utils.InputFile;
 
 public class Day19MedicineMolecule {
-	private static String[] LINES;
 
 	public static void main(String[] args) {
 		String file = "day19/input1";
-		LINES = InputFile.getLines(file);
+		String[] lines = InputFile.getLines(file);
 		
 		List<String[]> input = new ArrayList<>();
-		String molecule = parseInput(input);
+		String molecule = parseInput(input, lines);
 		
 		System.out.println(part1(input, molecule)); // 535 
 		System.out.println(part2(input, molecule)); // 212
 	}
 	
-	private static long part1(List<String[]> input, String molecule) {
+	public static long part1(List<String[]> input, String molecule) {
 		List<String> output = new ArrayList<>();
 		for (String[] each : input) {
             int position = 0;
@@ -34,7 +33,7 @@ public class Day19MedicineMolecule {
         return count;
 	}
 	
-	private static int part2(List<String[]> input, String molecule) {
+	public static int part2(List<String[]> input, String molecule) {
 		int count = 0;
         while(!molecule.equals("e")) {
             for (String[] each : input) {
@@ -48,15 +47,15 @@ public class Day19MedicineMolecule {
         return count;
 	}
 	
-	private static String parseInput(List<String[]> input) {
+	public static String parseInput(List<String[]> input, String[] lines) {
 		int i = 0;
 		while (true) {
-			String str = LINES[i++];
+			String str = lines[i++];
     	    if (str.length() == 0) break;
     	    String[] fields = str.split(" => ");
     	    input.add(fields); 
         }
-		return LINES[i];
+		return lines[i];
 	}
 	
 	public static String replace(String s, String in, String out, int position) {
