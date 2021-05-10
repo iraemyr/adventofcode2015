@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import net.ddns.spellbank.utils.InputFile;
 
 public class TestDay7 {
-	@Test
+    @Test
     void part1() {
         String[] lines = InputFile.getLines("day07/input1");
         Map<String, InputOutput> map = Day7LogicalCircuits.buildMap(lines);

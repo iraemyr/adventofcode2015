@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import net.ddns.spellbank.utils.InputFile;
 
 public class TestDay4 {
-	@Test
+    @Test
     void part1() {
         String[] lines = InputFile.getLines("day04/input1");
         assertEquals(117946, Day4MD5.part1(lines[0]));

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import net.ddns.spellbank.utils.InputFile;
 
 public class TestDay5 {
-	@Test
+    @Test
     void part1() {
         String[] lines = InputFile.getLines("day05/input1");
         assertEquals(238, Day5NiceList.part1(lines));
@@ -20,7 +20,7 @@ public class TestDay5 {
         String[] lines = InputFile.getLines("day05/input1");
         assertEquals(69, Day5NiceList.part2(lines));
     }
-    
+
     @Test
     void isNice1() {
         assertTrue(Day5NiceList.isNice("ugknbfddgicrmopn"));
@@ -28,9 +28,9 @@ public class TestDay5 {
 
     @Test
     void isNice2() {
-    	assertTrue(Day5NiceList.isNice("aaa"));
+        assertTrue(Day5NiceList.isNice("aaa"));
     }
-    
+
     @Test
     void isNice3() {
         assertFalse(Day5NiceList.isNice("jchzalrnumimnmhp"));
@@ -38,14 +38,14 @@ public class TestDay5 {
 
     @Test
     void isNice4() {
-    	assertFalse(Day5NiceList.isNice("haegwjzuvuyypxyu"));
+        assertFalse(Day5NiceList.isNice("haegwjzuvuyypxyu"));
     }
-    
+
     @Test
     void isNice5() {
-    	assertFalse(Day5NiceList.isNice("dvszwmarrgswjxmb"));
+        assertFalse(Day5NiceList.isNice("dvszwmarrgswjxmb"));
     }
-    
+
     @Test
     void isNewNice1() {
         assertTrue(Day5NiceList.isNewNice("qjhvhtzxzqqjkmpb"));
@@ -53,9 +53,9 @@ public class TestDay5 {
 
     @Test
     void isNewNice2() {
-    	assertTrue(Day5NiceList.isNewNice("xxyxx"));
+        assertTrue(Day5NiceList.isNewNice("xxyxx"));
     }
-    
+
     @Test
     void isNewNice3() {
         assertFalse(Day5NiceList.isNewNice("uurcxstgmygtbstg"));
@@ -63,7 +63,7 @@ public class TestDay5 {
 
     @Test
     void isNewNice4() {
-    	assertFalse(Day5NiceList.isNewNice("ieodomkazucvgmuy"));
+        assertFalse(Day5NiceList.isNewNice("ieodomkazucvgmuy"));
     }
 
 }
