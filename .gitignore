@@ -28,8 +28,14 @@ hs_err_pid*
 # Ignore Gradle build output directory
 build
 
+# Include all of gradle/wrapper directory
+!gradle/wrapper/*
+
 # Ignore Eclipse specific files
 .project
 .classpath
 bin/
 .settings/
+
+# Ignore Vscode specific files
+.vscode
