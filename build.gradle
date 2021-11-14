@@ -23,11 +23,12 @@ def generateTask(day, path) {
     tasks.register("day$day", JavaExec) {
         dependsOn('classes')
         classpath = sourceSets.main.runtimeClasspath
-        mainClass = path
+        main = path
     }
 }
 
 def sourceSet = project.sourceSets.findByName('main').java
+def fileSeparator = java.nio.file.FileSystems.getDefault().getSeparator();
 
 // Search through all java files in the sourceSets, that start with Day
 // in a directory that ends with two digits, which represent the day.
@@ -40,7 +41,7 @@ sourceSet.filter{ it.path.endsWith('.java') }.each {
     if (className.startsWith('Day')) {
         def classPath = it.getParentFile().path
             .substring(sourceSet.srcDirs[0].path.length()+1)
-            .replace('/', '.')
+            .replace(fileSeparator, '.')
 
         def dayNumber = classPath.substring(classPath.length()-2) as int
         generateTask(dayNumber, "$classPath.$className")
